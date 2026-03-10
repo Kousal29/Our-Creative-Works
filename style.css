@@ -1,0 +1,1134 @@
+/* ============================================================
+   OUR CREATIVE WORKS — v6 Premium
+   Space Grotesk · All-Dark · Outlined Numbers · Scale+Blur Reveals
+   ============================================================ */
+
+:root {
+    --black: #000;
+    --rich-black: #060606;
+    --charcoal: #0d0d0d;
+    --dark: #151515;
+    --mid: #333;
+    --muted: #5a5a5a;
+    --silver: #888;
+    --light: #bbb;
+    --off-white: #ddd;
+    --white: #fff;
+    --font-main: 'Space Grotesk', -apple-system, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Grain */
+.grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.022;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px;
+}
+
+/* ---- Loader ---- */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: var(--black);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s, visibility 1s;
+}
+
+#loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-inner {
+    text-align: center;
+}
+
+.loader-text {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: clamp(18px, 3.5vw, 36px);
+    letter-spacing: .2em;
+    color: var(--white);
+    margin-bottom: 40px;
+}
+
+.loader-bar-track {
+    width: 160px;
+    height: 1px;
+    background: var(--mid);
+    margin: 0 auto 16px;
+    overflow: hidden;
+}
+
+.loader-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--white);
+    transition: width .12s;
+}
+
+.loader-percent {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--silver);
+    letter-spacing: .25em;
+}
+
+/* ---- Nav ---- */
+#nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 10000;
+    background: rgba(0, 0, 0, .75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, .04);
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity .5s, transform .5s;
+}
+
+#nav.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-brand {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: .2em;
+    color: var(--white);
+}
+
+.nav-dots {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .3);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: all .35s;
+}
+
+.nav-dot.active {
+    background: var(--white);
+    border-color: var(--white);
+    box-shadow: 0 0 10px rgba(255, 255, 255, .35);
+    transform: scale(1.5);
+}
+
+/* ---- Hero ---- */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Grid canvas — interactive repulsion grid */
+.grid-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+
+.hero-spotlight {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vw;
+    max-width: 700px;
+    max-height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, .04) 0%, transparent 65%);
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+}
+
+.hero-tag {
+    font-family: var(--font-main);
+    font-weight: 300;
+    font-size: clamp(13px, 2vw, 22px);
+    letter-spacing: .5em;
+    color: var(--silver);
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 1s ease .3s forwards;
+}
+
+.hero-title {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: clamp(50px, 10vw, 120px);
+    letter-spacing: -.02em;
+    color: var(--white);
+    line-height: .92;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease .5s forwards;
+}
+
+.hero-line {
+    width: 50px;
+    height: 1px;
+    background: rgba(255, 255, 255, .15);
+    margin: 30px auto;
+    opacity: 0;
+    animation: fadeUp 1s ease .7s forwards;
+}
+
+.hero-sub {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: clamp(11px, 1.2vw, 15px);
+    letter-spacing: .35em;
+    color: var(--muted);
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 1s ease .9s forwards;
+}
+
+.scroll-cue {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeUp 1s ease 1.2s forwards;
+}
+
+.scroll-cue svg {
+    animation: bounce 2.2s ease-in-out infinite;
+}
+
+.scroll-cue-ring {
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .15);
+    animation: ring 2.2s ease-in-out infinite;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(6px);
+    }
+}
+
+@keyframes ring {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: .3;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* ============================================================
+   SCROLL SECTIONS — 65/35 SPLIT
+   ============================================================ */
+.scroll-sec {
+    position: relative;
+    height: 350vh;
+}
+
+.sticky-frame {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: var(--black);
+}
+
+.split-wrap {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* ---- Canvas (img-based for GPU compositing) ---- */
+.split-canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    transform-origin: center center;
+    will-change: width, transform;
+    contain: layout;
+}
+
+.seq-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* ---- Text Panel (ALL DARK) ---- */
+.split-panel {
+    width: 0%;
+    height: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--charcoal);
+    position: relative;
+    will-change: width;
+    contain: layout;
+}
+
+/* thin edge accent line */
+.split-panel::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, .06), transparent);
+}
+
+[data-side="right"] .split-panel::after {
+    right: 0;
+}
+
+[data-side="left"] .split-panel::after {
+    left: 0;
+}
+
+.panel-content {
+    padding: 48px 40px;
+    max-width: 420px;
+    width: 100%;
+}
+
+/* ============================================================
+   OUTLINED NUMBER
+   Huge, stroke-only, acts as a watermark
+   ============================================================ */
+.panel-num {
+    font-family: var(--font-main);
+    font-weight: 300;
+    font-size: clamp(90px, 12vw, 160px);
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, .28);
+    text-shadow: 0 0 40px rgba(255, 255, 255, .06), 0 0 80px rgba(255, 255, 255, .03);
+    letter-spacing: -.02em;
+    display: block;
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateY(24px) scale(1.08);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.split-panel.visible .panel-num {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* ============================================================
+   TYPOGRAPHY — Space Grotesk
+   ============================================================ */
+.panel-title {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: clamp(28px, 3.6vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    color: var(--white);
+    margin-bottom: 0;
+}
+
+/* Separator line (animated) */
+.panel-sep {
+    width: 0px;
+    height: 1px;
+    background: rgba(255, 255, 255, .15);
+    margin: 20px 0;
+    transition: width .7s cubic-bezier(.16, 1, .3, 1) .2s;
+}
+
+.split-panel.visible .panel-sep {
+    width: 50px;
+}
+
+.panel-caption {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(14px, 1.3vw, 17px);
+    color: var(--white);
+    opacity: 0.9;
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+.panel-body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: var(--silver);
+    margin-bottom: 18px;
+}
+
+/* ============================================================
+   WORD-BY-WORD SCALE + BLUR REVEAL
+   ============================================================ */
+.word {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(14px) scale(1.08);
+    transition:
+        opacity .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0s),
+        filter .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0s),
+        transform .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0s);
+    will-change: opacity, filter, transform;
+}
+
+.split-panel.visible .word {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+}
+
+/* ---- Chips ---- */
+.panel-chips {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 12px;
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    color: var(--light);
+    transition: all .3s;
+    cursor: default;
+    letter-spacing: .04em;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .5s ease .5s, transform .5s ease .5s, background .3s, color .3s, border-color .3s;
+}
+
+.split-panel.visible .chip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chip:hover {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--white);
+}
+
+/* ---- CTA ---- */
+.panel-cta {
+    display: inline-block;
+    padding: 11px 28px;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, .15);
+    color: var(--light);
+    margin-top: 8px;
+    transition: all .35s;
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.split-panel.visible .panel-cta {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: .55s;
+}
+
+.panel-cta:hover {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--white);
+}
+
+/* ---- Badge ---- */
+.badge-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, .1);
+    color: var(--light);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: .16em;
+    margin-top: 14px;
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.split-panel.visible .badge-soon {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all .5s ease .55s;
+}
+
+.badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--white);
+    animation: blink 1.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .25;
+    }
+}
+
+/* ---- Progress ---- */
+.sec-progress {
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 80px;
+    background: rgba(255, 255, 255, .06);
+    border-radius: 2px;
+    z-index: 20;
+}
+
+.sec-progress-bar {
+    width: 100%;
+    height: 0%;
+    background: var(--white);
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, .4);
+}
+
+/* ============================================================
+   SECTION CROSSFADE — Cinematic Transition
+   ============================================================ */
+.sec-fade {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    pointer-events: none;
+    background: var(--black);
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+/* ============================================================
+   LOGO REVEAL
+   ============================================================ */
+.scroll-sec-full .sticky-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seq-canvas-full {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-finale {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Push text to the bottom to avoid overlapping center logo */
+    padding-bottom: 8vh;
+    flex-direction: column;
+    z-index: 10;
+    text-align: center;
+    opacity: 0;
+    transform: scale(.92);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.logo-finale.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, .07) 0%, transparent 70%);
+    filter: blur(50px);
+    pointer-events: none;
+}
+
+.logo-title {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: clamp(26px, 5vw, 58px);
+    color: var(--white);
+    letter-spacing: .06em;
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.logo-sub {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: clamp(12px, 1.2vw, 16px);
+    color: var(--silver);
+    margin-top: 12px;
+    letter-spacing: .12em;
+}
+
+.logo-links {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.soc-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .1);
+    color: var(--white);
+    transition: all .35s;
+    text-decoration: none;
+}
+
+.soc-link:hover {
+    border-color: var(--white);
+    background: rgba(255, 255, 255, .05);
+    transform: translateY(-3px);
+}
+
+.logo-phone {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 16px;
+    letter-spacing: .08em;
+}
+
+/* ============================================================
+   ABOUT US SECTION
+   ============================================================ */
+.about-sec {
+    position: relative;
+    padding: 120px 32px;
+    background: var(--rich-black);
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+    z-index: 5;
+    border-top: 1px solid rgba(255, 255, 255, .03);
+}
+
+.about-container {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.about-title {
+    font-family: var(--font-main);
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: .04em;
+    margin-bottom: 16px;
+}
+
+.about-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(14px, 1.8vw, 18px);
+    color: var(--silver);
+    font-weight: 300;
+    letter-spacing: .04em;
+    margin-bottom: 40px;
+}
+
+.about-copy {
+    font-family: var(--font-body);
+    font-size: clamp(15px, 2vw, 20px);
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 48px;
+}
+
+.about-copy p {
+    margin-bottom: 16px;
+}
+
+.about-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, .05);
+}
+
+.about-phone {
+    font-family: var(--font-main);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: var(--white);
+}
+
+.about-socials {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+/* ---- Footer ---- */
+#footer {
+    position: relative;
+    background: var(--rich-black);
+    padding: 48px 32px 32px;
+    border-top: 1px solid rgba(255, 255, 255, .03);
+    overflow: hidden;
+}
+
+/* Animated grid on footer */
+#footer::after {
+    content: '';
+    position: absolute;
+    inset: -60px;
+    z-index: 0;
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 0, 0, .6) 0%, transparent 85%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0, 0, 0, .6) 0%, transparent 85%);
+}
+
+.footer-in {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-in {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-brand {
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .2em;
+    color: var(--white);
+    white-space: nowrap;
+}
+
+.footer-tag {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.footer-line {
+    width: 30px;
+    height: 1px;
+    background: rgba(255, 255, 255, .1);
+    margin: 18px auto 14px;
+}
+
+.footer-copy {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .04em;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .split-wrap {
+        flex-direction: column !important;
+    }
+
+    .split-canvas,
+    .split-panel {
+        width: 100% !important;
+    }
+
+    .split-canvas {
+        height: 100%;
+    }
+
+    .split-panel {
+        height: 0%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .panel-content {
+        padding: 28px 20px;
+    }
+
+    .panel-num {
+        font-size: 60px;
+    }
+
+    #nav {
+        padding: 0 16px;
+    }
+
+    .sec-progress {
+        left: 8px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    #nav {
+        background: var(--rich-black);
+        padding: 0 20px;
+    }
+
+    .scroll-sec {
+        height: 400vh;
+    }
+
+    .panel-title {
+        font-size: clamp(22px, 7vw, 34px);
+    }
+}
+
+/* ============================================================
+   CUSTOM CURSOR — Dot + Ring + Label
+   ============================================================ */
+body {
+    cursor: none !important;
+}
+
+a,
+button,
+.chip,
+.panel-cta,
+.soc-link,
+.nav-dot {
+    cursor: none !important;
+}
+
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--white);
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width .25s, height .25s, background .25s, opacity .3s;
+    mix-blend-mode: difference;
+}
+
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, .35);
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width .35s cubic-bezier(.16, 1, .3, 1), height .35s cubic-bezier(.16, 1, .3, 1),
+        border-color .25s, opacity .3s;
+}
+
+.cursor-label {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 9px;
+    letter-spacing: .25em;
+    color: var(--white);
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+/* Cursor states */
+.cursor-dot.hover-link {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, .08);
+    mix-blend-mode: normal;
+}
+
+.cursor-ring.hover-link {
+    width: 50px;
+    height: 50px;
+    border-color: transparent;
+}
+
+.cursor-dot.hover-canvas {
+    width: 4px;
+    height: 4px;
+    opacity: .5;
+}
+
+.cursor-ring.hover-canvas {
+    width: 70px;
+    height: 70px;
+    border-color: rgba(255, 255, 255, .25);
+}
+
+.cursor-label.hover-canvas {
+    opacity: 1;
+}
+
+/* ============================================================
+   PANEL — Floating gradient orb + 3D Perspective Tilt
+   ============================================================ */
+
+
+.split-panel {
+    overflow: hidden;
+    position: relative; /* for canvas absolute positioning */
+}
+
+.panel-content {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 10px var(--rich-black), 
+                 0 0 20px var(--rich-black), 
+                 0 0 40px var(--rich-black);
+}
+
+/* Panel clip-path wipe — panel itself clips in from side */
+[data-side="right"] .split-panel {
+    clip-path: inset(0 0 0 0);
+}
+
+[data-side="right"] .split-panel.clip-hidden {
+    clip-path: inset(0 100% 0 0);
+}
+
+[data-side="left"] .split-panel {
+    clip-path: inset(0 0 0 0);
+}
+
+[data-side="left"] .split-panel.clip-hidden {
+    clip-path: inset(0 0 0 100%);
+}
+
+/* ============================================================
+   CUSTOM TEXT SELECTION — Matches palette
+   ============================================================ */
+::selection {
+    background: rgba(255, 255, 255, .9);
+    color: #0d0d0d;
+}
+
+::-moz-selection {
+    background: rgba(255, 255, 255, .9);
+    color: #0d0d0d;
+}
+
+/* ============================================================
+   TEXT HOVER EFFECTS
+   ============================================================ */
+.panel-title .word {
+    transition:
+        opacity .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0s),
+        filter .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0s),
+        transform .8s cubic-bezier(.16, 1, .3, 1) var(--d, 0s),
+        color .2s;
+    cursor: none;
+}
+
+.panel-title .word:hover {
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 0 20px rgba(255, 255, 255, .15);
+}
+
+/* Caption — glow sweep on hover */
+.panel-caption {
+    position: relative;
+    overflow: hidden;
+}
+
+.panel-caption::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .3), transparent);
+    transition: left .6s cubic-bezier(.16, 1, .3, 1);
+}
+
+.panel-caption:hover::after {
+    left: 100%;
+}
+
+/* Body text — subtle lift */
+.panel-body .word:hover {
+    transform: translateY(-2px) !important;
+    color: var(--light);
+}
+
+/* Number — pulse glow on panel hover */
+.split-panel:hover .panel-num {
+    text-shadow: 0 0 60px rgba(255, 255, 255, .1), 0 0 120px rgba(255, 255, 255, .05);
+}
+
+/* ============================================================
+   SECTION FADE — Simple opacity (wipe is now on panel)
+   ============================================================ */
+.sec-fade {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    pointer-events: none;
+    background: var(--black);
+    opacity: 0;
+    transition: opacity .4s;
+}
+
+/* Hide cursor on mobile */
+@media (max-width: 768px) {
+    body {
+        cursor: auto !important;
+    }
+
+    .cursor-dot,
+    .cursor-ring,
+    .cursor-label {
+        display: none !important;
+    }
+
+    .split-panel {
+        transform: none !important;
+    }
+}

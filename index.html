@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Creative Works — Marketing & Consultancy Agency</title>
+    <meta name="description"
+        content="Your trusted Marketing & Consultancy Agency. Professional photo editing, filmmaking, videography, web development, events, and ads management.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-label" id="cursorLabel">SCROLL</div>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="loader-inner">
+            <div class="loader-text">OUR CREATIVE WORKS</div>
+            <div class="loader-bar-track">
+                <div class="loader-bar-fill" id="loaderBar"></div>
+            </div>
+            <div class="loader-percent" id="loaderPercent">0%</div>
+        </div>
+    </div>
+
+    <!-- GRAIN -->
+    <div class="grain"></div>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <div class="nav-brand"><img src="Logo.png" alt="Our Creative Works" style="height: 24px; width: auto; display: block;"></div>
+        <div class="nav-dots">
+            <button class="nav-dot active" data-idx="0"></button>
+            <button class="nav-dot" data-idx="1"></button>
+            <button class="nav-dot" data-idx="2"></button>
+            <button class="nav-dot" data-idx="3"></button>
+            <button class="nav-dot" data-idx="4"></button>
+            <button class="nav-dot" data-idx="5"></button>
+            <button class="nav-dot" data-idx="6"></button>
+            <button class="nav-dot" data-idx="7"></button>
+        </div>
+    </nav>
+
+    <!-- ======== HERO ======== -->
+    <section id="hero" class="hero">
+        <canvas class="grid-canvas" id="heroGrid"></canvas>
+        <div class="hero-spotlight"></div>
+        <div class="hero-content">
+            <p class="hero-tag">YOUR TRUSTED</p>
+            <h1 class="hero-title">CREATIVE<br>AGENCY</h1>
+            <div class="hero-line"></div>
+            <p class="hero-sub">Marketing &bull; Consultancy &bull; Innovation</p>
+        </div>
+        <div class="scroll-cue">
+            <div class="scroll-cue-ring"></div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- ======== SERVICE SECTIONS ======== -->
+
+    <!-- 01 PHOTO & VIDEO EDITING — panel LEFT, canvas RIGHT -->
+    <section id="s-editing" class="scroll-sec" data-side="right">
+        <div class="sticky-frame">
+            <div class="split-wrap">
+                <div class="split-panel">
+                    <div class="panel-content">
+                        <span class="panel-num">01</span>
+                        <h2 class="panel-title"><span class="rev">PHOTO &</span><br><span class="rev">VIDEO
+                                EDITING</span></h2>
+                        <div class="panel-sep"></div>
+                        <p class="panel-caption"><span class="rev">Creativity at its best ✨</span></p>
+                        <p class="panel-body"><span class="rev">Professional Photo & Video Editing services to make your
+                                moments, brands, and stories stand out. 🎬📸</span></p>
+                    </div>
+                </div>
+                <div class="split-canvas">
+                    <canvas class="seq-canvas" id="c-editing"></canvas>
+                </div>
+            </div>
+            <div class="sec-fade"></div>
+            <div class="sec-progress">
+                <div class="sec-progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 02 FILM MAKING — canvas LEFT, panel RIGHT -->
+    <section id="s-film" class="scroll-sec" data-side="left">
+        <div class="sticky-frame">
+            <div class="split-wrap">
+                <div class="split-canvas">
+                    <canvas class="seq-canvas" id="c-film"></canvas>
+                </div>
+                <div class="split-panel">
+                    <div class="panel-content">
+                        <span class="panel-num">02</span>
+                        <h2 class="panel-title"><span class="rev">FILM</span><br><span class="rev">MAKING</span></h2>
+                        <div class="panel-sep"></div>
+                        <p class="panel-caption"><span class="rev">Turn Your Filmmaking Dreams Into Reality ✨</span></p>
+                        <p class="panel-body"><span class="rev">10+ services from concept to creation — Writers,
+                                Directors, Editor, Cameraman, Music, Lighting, Actors, Dubbing, Poster Design,
+                                Promotions. 🎬</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="sec-fade"></div>
+            <div class="sec-progress">
+                <div class="sec-progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 VIDEOGRAPHY — panel LEFT, canvas RIGHT -->
+    <section id="s-video" class="scroll-sec" data-side="right">
+        <div class="sticky-frame">
+            <div class="split-wrap">
+                <div class="split-panel">
+                    <div class="panel-content">
+                        <span class="panel-num">03</span>
+                        <h2 class="panel-title"><span class="rev">VIDEOGRAPHY</span></h2>
+                        <div class="panel-sep"></div>
+                        <p class="panel-caption"><span class="rev">WE SHOOT YOUR REELS</span></p>
+                        <div class="panel-chips">
+                            <span class="chip">iPhone</span>
+                            <span class="chip">Camera</span>
+                            <span class="chip">Drone</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="split-canvas">
+                    <canvas class="seq-canvas" id="c-video"></canvas>
+                </div>
+            </div>
+            <div class="sec-fade"></div>
+            <div class="sec-progress">
+                <div class="sec-progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 WEB DEVELOPMENT — canvas LEFT, panel RIGHT -->
+    <section id="s-web" class="scroll-sec" data-side="left">
+        <div class="sticky-frame">
+            <div class="split-wrap">
+                <div class="split-canvas">
+                    <canvas class="seq-canvas" id="c-web"></canvas>
+                </div>
+                <div class="split-panel">
+                    <div class="panel-content">
+                        <span class="panel-num">04</span>
+                        <h2 class="panel-title"><span class="rev">WEBSITE</span><br><span class="rev">DEVELOPMENT</span>
+                        </h2>
+                        <div class="panel-sep"></div>
+                        <p class="panel-caption"><span class="rev">Your website is the face of your brand.</span></p>
+                        <p class="panel-body"><span class="rev">Modern, responsive, visually stunning websites —
+                                portfolio, business, or eCommerce. Creativity + Technology. 🚀</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="sec-fade"></div>
+            <div class="sec-progress">
+                <div class="sec-progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05 MINI EVENTS — panel LEFT, canvas RIGHT -->
+    <section id="s-events" class="scroll-sec" data-side="right">
+        <div class="sticky-frame">
+            <div class="split-wrap">
+                <div class="split-panel">
+                    <div class="panel-content">
+                        <span class="panel-num">05</span>
+                        <h2 class="panel-title"><span class="rev">MINI</span><br><span class="rev">EVENTS</span></h2>
+                        <div class="panel-sep"></div>
+                        <p class="panel-caption"><span class="rev">Coming Soon! 🎉💫</span></p>
+                        <p class="panel-body"><span class="rev">Intimate celebrations, small-but-special moments —
+                                beautifully handled with premium photography & videography.</span></p>
+                        <div class="badge-soon"><span class="badge-dot"></span>LAUNCHING SOON</div>
+                    </div>
+                </div>
+                <div class="split-canvas">
+                    <canvas class="seq-canvas" id="c-events"></canvas>
+                </div>
+            </div>
+            <div class="sec-fade"></div>
+            <div class="sec-progress">
+                <div class="sec-progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06 ADS MANAGEMENT — canvas LEFT, panel RIGHT -->
+    <section id="s-ads" class="scroll-sec" data-side="left">
+        <div class="sticky-frame">
+            <div class="split-wrap">
+                <div class="split-canvas">
+                    <canvas class="seq-canvas" id="c-ads"></canvas>
+                </div>
+                <div class="split-panel">
+                    <div class="panel-content">
+                        <span class="panel-num">06</span>
+                        <h2 class="panel-title"><span class="rev">ADS</span><br><span class="rev">MANAGEMENT</span></h2>
+                        <div class="panel-sep"></div>
+                        <p class="panel-caption"><span class="rev">🚀 Grow with powerful Meta Ads!</span></p>
+                        <p class="panel-body"><span class="rev">Turn your brand into a lead-generating machine.</span>
+                        </p>
+                        <a href="tel:9014002314" class="panel-cta">Contact — 9014002314</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sec-fade"></div>
+            <div class="sec-progress">
+                <div class="sec-progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07 LOGO REVEAL — FULL SCREEN -->
+    <section id="s-logo" class="scroll-sec scroll-sec-full">
+        <div class="sticky-frame">
+            <canvas class="seq-canvas seq-canvas-full" id="c-logo"></canvas>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="s-about" class="about-sec">
+        <canvas class="grid-canvas" id="aboutGrid"></canvas>
+        <div class="about-container">
+            <h2 class="about-title">About Us</h2>
+            <p class="about-subtitle">Your trusted Marketing & Consultancy Agency 🚀💼</p>
+            
+            <div class="about-copy">
+                <p>We believe in turning ideas into impactful strategies, building brands, and creating growth opportunities. 🌟</p>
+                <p>From marketing solutions to creative services, we are here to serve you with dedication and innovation.</p>
+            </div>
+
+            <div class="about-contact">
+                <p class="about-phone">📞 9014002314</p>
+                <div class="about-socials">
+                    <a href="#" class="soc-link" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5" />
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" />
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
+                        </svg></a>
+                    <a href="#" class="soc-link" aria-label="Twitter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-2A29 29 0 0023 12a29 29 0 00-.46-5.58z" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M9.75 15.02l5.75-3.27-5.75-3.27v6.54z" fill="currentColor" />
+                        </svg></a>
+                    <a href="https://wa.me/919014002314" class="soc-link" aria-label="WhatsApp"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor" />
+                        </svg></a>
+                </div>
+            </div>
+
+            <!-- Merged Footer Contents -->
+            <div class="footer-merged" style="margin-top: 60px;">
+                <span class="footer-brand">OUR CREATIVE WORKS</span>
+                <p class="footer-tag">Turning ideas into impactful strategies.</p>
+                <div class="footer-line"></div>
+                <p class="footer-copy">&copy; 2026 Our Creative Works. All rights reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
