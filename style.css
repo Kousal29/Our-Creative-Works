@@ -307,7 +307,7 @@ body {
    ============================================================ */
 .scroll-sec {
     position: relative;
-    height: 350vh;
+    height: 500vh;
 }
 
 .sticky-frame {
@@ -906,7 +906,7 @@ body {
     }
 
     .scroll-sec {
-        height: 400vh;
+        height: 600vh;
     }
 
     .panel-title {
